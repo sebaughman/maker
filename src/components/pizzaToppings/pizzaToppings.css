@@ -1,0 +1,15 @@
+.toppings-container{
+  display: flex;
+  flex-wrap: wrap;
+  margin: 20px;
+  margin-top: 5px;
+}
+.checkbox-wrapper{
+  margin: 5px;
+  min-width: fit-content;
+}
+.suptitle{
+  text-align: left;
+  font-size: 20px;
+  margin-bottom: 3px;
+}

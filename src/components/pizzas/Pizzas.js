@@ -5,7 +5,7 @@ import Tile from '../tile/Tile';
 import './pizzas.css'
 
 const GET_PIZZAS = gql`
-{
+query getPizzas {
   pizzas {
     id
     name
