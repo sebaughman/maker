@@ -1,7 +1,11 @@
 import React, { Component } from 'react';
-import Toppings from './components/toppings/Toppings'
-import EditToppingPopup from './components/editToppings/EditToppingPopup'
+import { toast } from 'react-toastify';
+import Toppings from './components/toppings/Toppings';
+import EditToppingPopup from './components/editToppings/EditToppingPopup';
+import 'react-toastify/dist/ReactToastify.css';
 import './App.css';
+
+toast.configure()
 
 class App extends Component {
   constructor() {

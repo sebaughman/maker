@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { gql } from 'apollo-boost';
 import { Mutation } from 'react-apollo';
 import './editToppingPopup.css'
+import { toast } from 'react-toastify';
 
 const UPDATE_TOPPING = gql`
 mutation updateTopping ($id: ID, $name: String) {
@@ -56,6 +57,10 @@ class EditToppingPopup extends Component {
     })
   }
 
+  onError({ graphQLErrors }) {
+    toast.error(graphQLErrors[0].message)
+  }
+
   getCreateMutation() {
     const { name } = this.state;
     const { closePopup } = this.props;
@@ -65,6 +70,7 @@ class EditToppingPopup extends Component {
         mutation={CREATE_TOPPING}
         variables={{ name: name }}
         onCompleted={closePopup}
+        onError={this.onError}
         update={(cache, { data: { createTopping } }) => {
           const { toppings } = cache.readQuery({ query: GET_TOPPINGS });
           cache.writeQuery({
@@ -87,6 +93,7 @@ class EditToppingPopup extends Component {
         mutation={UPDATE_TOPPING}
         variables={{ id: toppingId, name: name }}
         onCompleted={closePopup}
+        onError={this.onError}
       >
         {(submit) => <button disabled={!name} className='teal-button' onClick={submit}>Update</button>}
       </Mutation>
@@ -113,6 +120,7 @@ class EditToppingPopup extends Component {
                 mutation={DELETE_TOPPING}
                 variables={{ id: toppingId }}
                 onCompleted={closePopup}
+                onError={this.onError}
                 update={(cache, { data: { deleteTopping } }) => {
                   const { toppings } = cache.readQuery({ query: GET_TOPPINGS });
                   cache.writeQuery({
