@@ -46,7 +46,7 @@ class EditToppingPopup extends Component {
 
   componentWillReceiveProps(next) {
     const { toppingName } = this.props;
-    if (next.toppingName != toppingName) {
+    if (next.toppingName !== toppingName) {
       this.setState({ name: next.toppingName })
     }
   }

@@ -6,7 +6,7 @@
   height: 40vmin;
 }
 
-.App-header {
+.main-container {
   background-color: #282c34;
   min-height: 100vh;
   display: flex;
@@ -19,6 +19,11 @@
 
 .App-link {
   color: rgb(90, 196, 204);
+}
+.row {
+  display: flex;
+  justify-content: space-evenly;
+  width: 70%;
 }
 .teal-button{
   background-image: linear-gradient(0deg,rgb(14, 142, 151), rgb(90, 196, 204));
