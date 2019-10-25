@@ -1,5 +1,5 @@
 
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { useQuery, useMutation } from '@apollo/react-hooks';
 import { gql } from 'apollo-boost';
 import { toast } from 'react-toastify';
@@ -41,10 +41,13 @@ const handleError = ({ graphQLErrors }) => {
 }
 
 const getPizzaToppingIds = (pizzaToppings) => {
-  return pizzaToppings.reduce((acc, topping) => {
-    acc.push(topping.id);
-    return acc;
-  }, [])
+  if (pizzaToppings) {
+    return pizzaToppings.reduce((acc, topping) => {
+      acc.push(topping.id);
+      return acc;
+    }, [])
+  }
+  return []
 }
 
 const getCheckboxes = (pizzaId, { toppings }, { pizzaToppings }, addTopping, removeTopping) => {
@@ -85,9 +88,9 @@ function PizzaToppings({ pizzaId }) {
 
   return (
     <div className='container'>
-      <h4 className='suptitle'>Toppings</h4>
+      <h4 className='subtitle'>Toppings</h4>
       <div className='toppings-container'>
-        {getCheckboxes(pizzaId, allToppings, pizzaToppings, addTopping, removeTopping)}
+        {getCheckboxes(pizzaId, allToppings, pizzaToppings || {}, addTopping, removeTopping)}
       </div>
     </div>
   );

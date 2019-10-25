@@ -20,7 +20,7 @@ const getPizzas = ({ pizzas }, openPopup) => {
   })
 }
 
-function Pizzas({ openPopup }) {
+function Pizzas({ openPopup, openCreatePopup }) {
   const { loading, data } = useQuery(GET_PIZZAS);
   if (loading) return <p>Loading...</p>;
 
@@ -30,7 +30,7 @@ function Pizzas({ openPopup }) {
       <div className='pizza-wrapper'>
         {getPizzas(data, openPopup)}
       </div>
-      <button className='green-button' onClick={() => openPopup()}>Create Pizza</button>
+      <button className='green-button' onClick={() => openCreatePopup()}>Create Pizza</button>
     </div>
   );
 }

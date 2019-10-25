@@ -1,0 +1,16 @@
+.name-input-wrapper{
+  display: flex;
+  justify-content: space-evenly;
+  margin-top: 10px;
+}
+.subtitle{
+  text-align: left;
+  font-size: 20px;
+  margin-bottom: 3px;
+}
+.toppings-container{
+  display: flex;
+  flex-wrap: wrap;
+  margin: 20px;
+  margin-top: 5px;
+}

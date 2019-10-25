@@ -3,9 +3,10 @@ import { toast } from 'react-toastify';
 import Toppings from './components/toppings/Toppings';
 import EditToppingPopup from './components/editTopping/EditToppingPopup';
 import EditPizzaPopup from './components/editPizza/EditPizzaPopup'
+import CreatePizzaPopup from './components/createPizza/createPizzaPopup'
+import Pizzas from './components/pizzas/Pizzas';
 import 'react-toastify/dist/ReactToastify.css';
 import './App.css';
-import Pizzas from './components/pizzas/Pizzas';
 
 toast.configure()
 
@@ -15,6 +16,7 @@ class App extends Component {
     this.state = {
       editTopping: 'hidden',
       editPizza: 'hidden',
+      createPizza: 'hidden',
       openToppingId: '',
       openToppingName: '',
       openPizzaId: ''
@@ -51,15 +53,27 @@ class App extends Component {
     })
   }
 
+  openCreatePopup() {
+    this.setState({
+      createPizza: 'visible',
+    })
+  }
+
+  closeCreatePopup() {
+    this.setState({
+      createPizza: 'hidden',
+    })
+  }
+
   render() {
-    const { openToppingId, openToppingName, editTopping, editPizza, openPizzaId } = this.state;
+    const { openToppingId, openToppingName, editTopping, editPizza, openPizzaId, createPizza } = this.state;
     return (
       <div className="App">
         <header className="main-container">
           <h1 className="App-link">Pizza Maker</h1>
           <div className='row'>
             <Toppings openPopup={(id, name) => this.openToppingPopup(id, name)} />
-            <Pizzas openPopup={(id) => this.openPizzaPopup(id)} />
+            <Pizzas openCreatePopup={() => this.openCreatePopup()} openPopup={(id) => this.openPizzaPopup(id)} />
           </div>
         </header>
         <div className='popup'>
@@ -68,6 +82,9 @@ class App extends Component {
         {openPizzaId && <div className='popup'>
           <EditPizzaPopup pizzaId={openPizzaId} visibility={editPizza} closePopup={() => this.closePizzaPopup()} />
         </div>}
+        <div className='popup'>
+          <CreatePizzaPopup visibility={createPizza} closePopup={() => this.closeCreatePopup()} />
+        </div>
       </div>
     );
   }

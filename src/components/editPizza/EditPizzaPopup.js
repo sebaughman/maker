@@ -42,7 +42,7 @@ const handleError = ({ graphQLErrors }) => {
 
 const getName = (data) => {
   if (data && data.pizzas[0]) return data.pizzas[0].name
-  return ''
+  return null
 }
 const getNewPizzas = (pizzas, idToRemove) => {
   return pizzas.filter(pizza => pizza.id !== idToRemove)
@@ -50,7 +50,7 @@ const getNewPizzas = (pizzas, idToRemove) => {
 
 function EditPizzaPopup({ pizzaId, visibility, closePopup }) {
   const { data } = useQuery(GET_PIZZA, { variables: { id: pizzaId } });
-  const [name, setName] = useState('');
+  const [name, setName] = useState();
   const [updatePizza] = useMutation(UPDATE_PIZZA, {
     onError: (error) => { handleError(error) },
     onCompleted: () => { closePopup() }
@@ -76,7 +76,7 @@ function EditPizzaPopup({ pizzaId, visibility, closePopup }) {
           <input placeholder='Pizza Name' type='text' value={name} onChange={(event) => setName(event.target.value)} />
         </div>
         <PizzaToppings pizzaId={pizzaId} />
-        <div>
+        <div className='button-container'>
           <button className='teal-button' onClick={() => updatePizza({ variables: { id: pizzaId, name: name } })}>Update Pizza</button>
           <button className='pink-button' onClick={() => deletePizza({ variables: { id: pizzaId } })}>Delete Pizza</button>
         </div>
