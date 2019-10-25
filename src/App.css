@@ -18,5 +18,75 @@
 }
 
 .App-link {
-  color: #09d3ac;
+  color: rgb(90, 196, 204);
+}
+.teal-button{
+  background-image: linear-gradient(0deg,rgb(14, 142, 151), rgb(90, 196, 204));
+  border: none;
+  border-radius:3px;
+  box-shadow: 2px 5px 5px 0px rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.2);
+}
+.pink-button{
+  background-image: linear-gradient(0deg,rgb(221, 6, 13), rgb(240, 135, 139));
+  border: none;
+  border-radius:3px;
+  box-shadow: 2px 5px 5px 0px rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.2);
+}
+.green-button{
+  background-image: linear-gradient(0deg,#27ae60, #34d879);
+  border: none;
+  border-radius:3px;
+  box-shadow: 2px 5px 5px 0px rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.2);
+}
+.popup{
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  pointer-events: none;
+}
+.popup-background{
+  background-color: rgba(0, 0, 0,.6);
+  height:100vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center ;
+  pointer-events: all;
+}
+.popup-content{
+  height: fit-content;;
+  width: 280px;
+  opacity: 1;
+  border-radius: 5px;
+  background-color: white;
+  color: #333;
+  display: flex;
+  flex-direction: column;
+  padding: 10px;   
+}
+
+.popup-content h3{
+  align-self: center;
+  margin-top: 3px;
+  margin-bottom: 2px;
+  font-size: 1.6em;
+  color:#333640;
+}
+.exit-popup-button{
+  margin-right: -15px;
+  font-size: 1.1em;
+  background: none;
+  border: none;
+ }
+ .title-container{
+  display:flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 96%;
+  margin-bottom: 3px;
+  max-width: 650px;
 }

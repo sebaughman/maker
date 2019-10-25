@@ -1,0 +1,14 @@
+
+.tile-wrapper{
+  background-color: #5e6779;
+  border-radius: 11px;
+  box-shadow: 0 1px 5px 0 rgba(33, 33, 33, 0.05), 0 3px 17px 0 rgba(104, 87, 178, 0.1);
+  padding: 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 175px;
+  height: 17px;
+  font-size: 18px;
+  margin: 10px;
+}
